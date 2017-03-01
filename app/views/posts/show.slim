@@ -30,7 +30,7 @@
     - if @post.comments.present?
       h4 Post Comments:
       .comments-collection
-        - @post.recent_comments.each do |comment|
+        - @post.comment_list.each do |comment|
           .comment-item
             .comment-body-text
               = comment.body

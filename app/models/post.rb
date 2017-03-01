@@ -18,7 +18,7 @@ class Post < ApplicationRecord
     super || build_picture
   end
 
-  def recent_comments
-    comments.order(created_at: :desc)
+  def comment_list
+    comments.order(created_at: :asc)
   end
 end
