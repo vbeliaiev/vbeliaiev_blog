@@ -39,6 +39,8 @@ gem 'will_paginate-bootstrap'
 # Image uploader
 gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
+gem 'fog'
+
 group :development, :test do
   # Use pry for debug.
   gem 'pry-rails'

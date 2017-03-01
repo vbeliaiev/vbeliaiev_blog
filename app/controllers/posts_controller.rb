@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     authorize @post
+
     if @post.save
       redirect_to post_path(@post), notice: 'Post successfully created'
     else
