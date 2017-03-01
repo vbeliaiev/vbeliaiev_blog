@@ -1,0 +1,42 @@
+.comments-form {
+
+  .comment-body {
+    resize: vertical;
+  }
+}
+
+.comments-collection {
+  width: 100%;
+  display: table;
+
+  .comment-item {
+    display: table;
+    margin-bottom: 5px;
+    clear: both;
+
+    .comment-control {
+      clear: both;
+      float: left;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .comment-body-text {
+      background: #ecf0f1;
+      width: 1140px;
+      padding: 5px;
+      margin-bottom: 5px;
+      border-radius: 3px;
+    }
+
+  }
+
+  hr.comment-hr {
+    width: 400px;
+    float: left;
+    clear: both;
+    &:last-child {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.small-flash.text-center
+  = flash_messages
+.row
+  .box.small-box
+    h4.text-center= @user.display_name
+    h6.text-center
+      i = @user.email
+  - @user.posts.decorate.each do |post|
+    =render 'posts/post', post: post

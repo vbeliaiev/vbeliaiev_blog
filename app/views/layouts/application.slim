@@ -1,0 +1,32 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="Students blog" name="description" /
+    meta content="Vladislav Beliaiev" name="author" /
+    title Blog
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
+    link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css" /
+  body
+    = render 'layouts/sign_in_cell'
+
+    - if policy(:post).new?
+      = link_to 'Create new post', new_post_path, class: 'btn btn-lg btn-success pull-left create-new-post-button'
+
+    = link_to root_path, class: 'logo-link' do
+      .brand Blog
+      .address-bar Évaluation Ruby on Rails
+
+    .container.main-content
+      = yield
+
+    footer
+      .container
+        .row
+          .col-lg-12.text-center
+            p = "Copyrights #{ Date.current.year }"

@@ -1,0 +1,13 @@
+.row
+  .box
+    - unless post.picture.new_record?
+      = image_tag post.picture.picture.thumb.url, class: 'post-thumb-picture'
+    = link_to post_path(post) do
+      h4 = post.title
+    .post-content
+      = truncate(post.body, length: 350)
+    .created-by-post.pull-left
+      span.created-by-title-post Created by:&nbsp;
+      span = link_to post.author_name, user_path(post.user)
+    .created-at-post.pull-right
+      = post.created_at.strftime('%d %b %Y %H:%M')
