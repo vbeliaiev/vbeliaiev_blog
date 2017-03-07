@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if login(params[:email], params[:password])
       redirect_to root_path, notice: 'Logged in successfully'
     else
-      redirect_to signin_path, alert: 'Email or password invalid'
+      redirect_to sign_in_path, alert: 'Email or password invalid'
     end
   end
 

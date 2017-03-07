@@ -1,18 +1,6 @@
 CarrierWave.configure do |config|
   rails_secrets = Rails.application.secrets
 
-  # Use secrets.yml on development
-  if Rails.env.development?
-    config.fog_credentials = {
-        :provider              => 'AWS',
-        :aws_access_key_id     => rails_secrets.S3_KEY,
-        :aws_secret_access_key => rails_secrets.S3_SECRET,
-        :region                => rails_secrets.S3_REGION,
-        endpoint:              rails_secrets.S3_PATH
-    }
-    config.fog_directory = rails_secrets.S3_BUCKET_NAME
-  end
-
   # Use heroku vars on production
   if Rails.env.production?
     config.fog_credentials = {
@@ -26,14 +14,16 @@ CarrierWave.configure do |config|
   end
 
   # For testing, upload files to local `tmp` folder.
-  if Rails.env.test?
+  if Rails.env.test? || Rails.env.development?
     config.storage = :file
-    config.enable_processing = false
-    config.root = "#{Rails.root}/tmp"
+    #config.enable_processing = false
+    #config.root = "#{Rails.root}/tmp"
   else
     config.storage = :fog
   end
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
-  Fog::Storage.new(config.fog_credentials).sync_clock if Rails.env.development?
+
+  #Fog::Storage.new(config.fog_credentials).sync_clock
+
 end
