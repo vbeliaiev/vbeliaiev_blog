@@ -14,3 +14,6 @@ class User < ApplicationRecord
   validates :first_name, length: { minimum: 2, maximum: 25 }, allow_blank: true
   validates :last_name, length: { minimum: 2, maximum: 25 }, allow_blank: true
 end
+
+
+

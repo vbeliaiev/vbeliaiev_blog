@@ -9,9 +9,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.latest
                  .includes(:user)
+                 .with_tag(params[:tag_id])
                  .order(created_at: :desc)
                  .paginate(page: params[:page], per_page: 15)
                  .decorate
+    @tags = Tag.all
   end
 
   def show

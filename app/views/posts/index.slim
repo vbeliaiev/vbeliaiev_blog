@@ -1,6 +1,15 @@
 .row
   = flash_messages
-= render @posts
 
-.row.paginate-row.text-right
-  = will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: '←', next_label: '→'
+.col-xs-9.pull-left
+  = render @posts
+
+.col-xs-2.pull-right
+  .row
+    .box
+      - @tags.each do |tag|
+        = link_to '#' + tag.name, posts_path(tag_id: tag.id)
+        br
+.col-xs-12
+  .row.paginate-row.pull-left
+    = will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: '←', next_label: '→'

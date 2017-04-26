@@ -14,6 +14,12 @@
       span = link_to @post.author_name, user_path(@post.user)
     .created-at-post.pull-right
       = @post.created_at.strftime('%d %b %Y %H:%M')
+    br
+    br
+    .post-tags
+      | Related tags:
+      - @post.tags.each do |tag|
+        b = link_to '#' + tag.name, ''
     - if policy(@post).destroy?
       = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
         span.glyphicon.glyphicon-trash
