@@ -17,6 +17,9 @@
       = @post.created_at.strftime('%d %b %Y %H:%M')
     br
     br
+    = social_share_button_tag(@post.title,
+            desc: 'TEST DESCRIPTION!',
+            image: @post.picture.new_record? ? nil : @post.picture.picture.url )
     - if policy(@post).destroy?
       = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
         span.glyphicon.glyphicon-trash
