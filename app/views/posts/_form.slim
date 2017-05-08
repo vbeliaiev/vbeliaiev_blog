@@ -1,6 +1,7 @@
 = bootstrap_form_for @post, html: { class: 'posts-form' }, multipart: true do |f|
   = f.text_field :title, placeholder: 'Post title', minlength: 2, maxlength: 255
-  = f.text_area :body, placeholder: 'Post body', minlength: 10, maxlength: 6555
+  = f.text_area :body, placeholder: 'Post body', minlength: 10, maxlength: 6555, class: 'tinymce'
+  = tinymce
   = f.fields_for :picture do |pic|
     = pic.file_field :picture
   br

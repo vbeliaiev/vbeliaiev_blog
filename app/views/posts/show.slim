@@ -8,7 +8,7 @@
       = image_tag @post.picture.picture.url, class: 'post-picture'
     br
     .post-content
-      = @post.body
+      = @post.display_body
     = @post.tags_links(css_wrapper_class: 'show-post-tags')
     .created-by-post.pull-left
       span.created-by-title-post Created By:&nbsp;

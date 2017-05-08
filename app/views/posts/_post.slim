@@ -5,7 +5,7 @@
     = link_to post_path(post) do
       h4 = post.title
     .post-content
-      = truncate(post.body, length: 350)
+      = truncate_html(post.display_body, length: 250)
     = post.tags_links(css_wrapper_class: 'tag-links')
     .created-by-post.pull-left
       span.created-by-title-post Created by:&nbsp;

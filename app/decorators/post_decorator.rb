@@ -20,4 +20,8 @@ class PostDecorator < Draper::Decorator
 
 
   end
+
+  def display_body
+    body.html_safe
+  end
 end

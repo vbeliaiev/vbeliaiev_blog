@@ -22,6 +22,13 @@ gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 
+gem 'tinymce-rails'
+
+
+gem 'nokogiri'
+gem 'htmlentities'
+gem 'truncate_html'
+
 # Authentication
 gem 'sorcery'
 

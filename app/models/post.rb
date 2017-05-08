@@ -40,6 +40,6 @@ class Post < ApplicationRecord
   end
 
   def tags_names_from_body
-    body.scan(/#([^\s|\#]+)/).flatten
+    ActionController::Base.helpers.strip_tags(body).scan(/#([^\s|\#]+)/).flatten
   end
 end
