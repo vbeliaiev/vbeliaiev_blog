@@ -7,19 +7,11 @@
   margin-right: 15px;
   border-radius: 4px;
 
-  a {
-    text-decoration: underline;
-    font-weight: bold;
+  .logged-in-as-text {
+    margin-top: 6px;
   }
 }
 
 .brand {
   clear: both;
-}
-
-.create-new-post-button {
-  margin-top: 15px;
-  margin-left: 15px;
-  font-size: 14px;
-  line-height: 20px;
 }

@@ -7,13 +7,14 @@ class PostsController < ApplicationController
                                           :edit]
 
   def index
-    @posts = Post.latest
-                 .includes(:user)
-                 .with_tag(params[:tag_id])
-                 .order(created_at: :desc)
-                 .paginate(page: params[:page], per_page: 15)
+    @posts = Post.includes(:user, :picture, :tags)
+                 .with_tag_id(params[:tag_id])
+                 .latest
+                 .paginate(page: params[:page], per_page: 10)
                  .decorate
-    @tags = Tag.all
+
+    @tags = Tag.select(:id, :name).latest.decorate
+    @current_tag = Tag.find_by(id: params[:tag_id])
   end
 
   def show

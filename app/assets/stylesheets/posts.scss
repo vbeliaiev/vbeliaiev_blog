@@ -40,3 +40,55 @@
   margin: 0 auto;
   max-width: 100%;
 }
+
+.posts-list, .pagination-div {
+  width: 71%;
+}
+
+.current-tag {
+  color: white;
+  text-shadow: 1px 1px 2px #333333;
+  margin-left: -15px;
+}
+.post-tags-list {
+  width: 24%;
+  float: right;
+
+  .box.tags-box {
+    padding-top: 15px;
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    a {
+      font-size: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      font-weight: 600;
+      float: left;
+      max-width: 100%;
+      margin-right: 16px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+}
+
+
+.tag-links {
+  clear: both;
+  margin-bottom: -5px;
+  margin-top: 5px;
+}
+
+
+.show-post-tags {
+  margin-top: 5px;
+  margin-bottom: -5px;
+}

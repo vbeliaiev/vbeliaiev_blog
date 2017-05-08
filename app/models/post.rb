@@ -7,20 +7,18 @@ class Post < ApplicationRecord
   has_many :post_tags
   has_many :tags, through: :post_tags
 
-
   validates :title, presence: true, length: { minimum: 2, maximum: 255 }
   validates :body, presence: true, length: { minimum: 10, maximum: 6555 }
   validates :user_id, presence: true
 
-  scope :latest, -> { order(updated_at: :desc) }
-  scope :with_tag, -> (tag_id) { joins(:tags).where('tags.id = ?', tag_id).uniq if tag_id.present? }
+  scope :latest, -> { order(created_at: :desc) }
+  scope :with_tag_id, -> (tag_id) { joins(:post_tags).where('tag_id = ?', tag_id).distinct if tag_id.present? }
 
   accepts_nested_attributes_for :picture
 
   alias_method :author, :user
 
   after_save :assign_tags
-
 
 
   def picture

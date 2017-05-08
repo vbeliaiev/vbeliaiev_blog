@@ -1,0 +1,21 @@
+.log-in-data.pull-right
+  - if current_user.present?
+    .logged-in-as-text.pull-left
+      | Logged in as&nbsp;
+    .dropdown.pull-left
+      button#user-actions-dropdown.btn.btn-default.dropdown-toggle aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" type="button"
+        b = current_user.decorate.display_name
+        | &nbsp; &nbsp;
+        span.caret
+      ul.dropdown-menu aria-labelledby="#user-actions-dropdown"
+        - if policy(:post).new?
+          li
+            = link_to 'Create New Post', new_post_path
+        - if policy(:user).can_create_new_user?
+          li
+            = link_to 'Create New User', new_user_path
+        li.divider role='separator'
+        li
+          = link_to 'Sign Out', logout_path
+  - else
+    = link_to 'Sign in', sign_in_path

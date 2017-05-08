@@ -14,14 +14,12 @@ html lang="en"
     link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
     link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css" /
   body
-    = render 'layouts/sign_in_cell'
+    = render 'layouts/user_actions'
 
-    - if policy(:post).new?
-      = link_to 'Create new post', new_post_path, class: 'btn btn-lg btn-success pull-left create-new-post-button'
 
     = link_to root_path, class: 'logo-link' do
-      .brand Blog
-      .address-bar Évaluation Ruby on Rails
+      .brand #FRANRUS
+      .address-bar Blog ukrainian french student
 
     .container.main-content
       = yield

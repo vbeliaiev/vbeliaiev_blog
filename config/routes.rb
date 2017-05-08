@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "signin" => "sessions#new", :as => "sign_in"
-  get "signup" => "users#new", :as => "sign_up"
 
   root 'posts#index'
 end
