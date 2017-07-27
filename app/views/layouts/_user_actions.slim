@@ -1,5 +1,5 @@
-.log-in-data.pull-right
-  - if current_user.present?
+- if current_user.present?
+  .log-in-data.pull-right
     .logged-in-as-text.pull-left
       | Logged in as&nbsp;
     .dropdown.pull-left
@@ -17,5 +17,5 @@
         li.divider role='separator'
         li
           = link_to 'Sign Out', logout_path
-  - else
-    = link_to 'Sign in', sign_in_path
+- else
+  - link_to 'Sign in', sign_in_path
