@@ -1,7 +1,7 @@
 .row
   = flash_messages
 - if @current_tag
-  h2.current-tag = "##{@current_tag&.name}"
+  h2.current-tag = "##{@current_tag.try(:name)}"
 - else
   h2.current-tag Latest Posts:
 .posts-list.pull-left
