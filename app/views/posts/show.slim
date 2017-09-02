@@ -9,7 +9,7 @@
     br
     .post-content
       = @post.display_body
-    = @post.tags_links(css_wrapper_class: 'show-post-tags')
+    = post_tags_links(@post, css_wrapper_class: 'show-post-tags')
     .created-by-post.pull-left
       span.created-by-title-post Created By:&nbsp;
       span = link_to @post.author_name, user_path(@post.user)

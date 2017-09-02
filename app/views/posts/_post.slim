@@ -6,7 +6,7 @@
       h4 = post.title
     .post-content
       = truncate_html(post.display_body, length: 250)
-    = post.tags_links(css_wrapper_class: 'tag-links')
+    = post_tags_links(post, css_wrapper_class: 'tag-links')
     .created-by-post.pull-left
       span.created-by-title-post Created by:&nbsp;
       span = link_to post.author_name, user_path(post.user)
