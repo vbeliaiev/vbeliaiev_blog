@@ -5,4 +5,8 @@ class Tag < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   scope :latest, -> { order(created_at: :desc) }
+
+  def display_name
+    "##{name}"
+  end
 end

@@ -29,5 +29,4 @@ class PostPolicy
   def show?
     true
   end
-
 end

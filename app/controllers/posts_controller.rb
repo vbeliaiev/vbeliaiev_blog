@@ -1,24 +1,20 @@
 class PostsController < ApplicationController
-  before_action :set_and_authorize_post, only: [:show, :edit, :update, :destroy]
-  after_action :verify_authorized, only: [:new,
-                                          :create,
-                                          :destroy,
-                                          :update,
-                                          :edit]
+  before_action :set_and_authorize_post, only: %i[show edit update destroy]
+  after_action :verify_authorized, only: %i[new create destroy update edit]
 
   def index
     @posts = Post.includes(:user, :picture, :tags)
                  .with_tag_id(params[:tag_id])
                  .latest
                  .paginate(page: params[:page], per_page: 10)
-                 .decorate
 
-    @tags = Tag.select(:id, :name).latest.decorate
+    @tags = Tag.select(:id, :name).latest
     @current_tag = Tag.find_by(id: params[:tag_id])
   end
 
-  def show
-  end
+  def show; end
+
+  def edit; end
 
   def new
     @post = Post.new
@@ -34,9 +30,6 @@ class PostsController < ApplicationController
     else
       redirect_to new_post_path, alert: @post.errors.values.join(', ')
     end
-  end
-
-  def edit
   end
 
   def update
@@ -60,16 +53,16 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title,
                                  :body,
-                                 picture_attributes: picture_attributes
-    ).merge(user_id: current_user.id)
+                                 picture_attributes: picture_attributes)
+          .merge(user_id: current_user.id)
   end
 
   def picture_attributes
-    [:picture, :id]
+    %i[picture id]
   end
 
   def set_and_authorize_post
-    @post = Post.find(params[:id]).decorate
+    @post = Post.find(params[:id])
     authorize @post
   end
 end

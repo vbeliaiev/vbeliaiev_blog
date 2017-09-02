@@ -13,5 +13,4 @@ class CommentPolicy
   def destroy?
     !!user && (user == comment.author || user == comment.post.author)
   end
-
 end

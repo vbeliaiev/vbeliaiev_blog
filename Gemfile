@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.1.4.rc1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.7'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap_form'
@@ -26,8 +26,8 @@ gem 'turbolinks', '~> 5'
 gem 'tinymce-rails'
 
 # Truncate html
-gem 'nokogiri'
 gem 'htmlentities'
+gem 'nokogiri'
 gem 'truncate_html'
 
 # Social buttons
@@ -39,24 +39,19 @@ gem 'sorcery'
 # Authorization
 gem 'pundit'
 
-# Decorators
-gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
-
 # Paginate
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 
 # Image uploader
-gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
+gem 'mini_magick'
 
 group :development, :test do
-  # Use pry for debug.
-  gem 'pry-rails'
   gem 'pry'
   gem 'pry-nav'
+  gem 'pry-rails'
   gem 'pry-remote'
 
   gem 'factory_girl_rails'
@@ -65,11 +60,13 @@ end
 
 group :development do
   gem 'listen'
+  gem 'rubocop', '~> 0.49.1', require: false
 end
+
 group :test do
-  gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
-  gem 'rails-controller-testing'
 end

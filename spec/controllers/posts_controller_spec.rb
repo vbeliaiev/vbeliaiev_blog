@@ -2,9 +2,7 @@ require 'rails_helper'
 include Sorcery::TestHelpers::Rails::Controller
 
 RSpec.describe PostsController, type: :controller do
-
   context "when user NOT logged in" do
-
     describe "GET #new" do
       it "redirect to index page" do
         get :new
@@ -52,9 +50,9 @@ RSpec.describe PostsController, type: :controller do
       let(:post_valid_params) { FactoryGirl.attributes_for(:post) }
 
       it "creates new object" do
-        expect{
+        expect do
           post :create, params: { post: post_valid_params }
-        }.to change(Post, :count).by(1)
+        end.to change(Post, :count).by(1)
       end
 
       it "rendirects to post path" do
@@ -64,12 +62,12 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context "with not valid attributes for post create action" do
-      let(:post_invalid_params) { FactoryGirl.attributes_for(:post).merge({title: nil}) }
+      let(:post_invalid_params) { FactoryGirl.attributes_for(:post).merge(title: nil) }
 
       it "not save object to db" do
-        expect{
+        expect do
           post :create, params: { post: post_invalid_params }
-        }.to_not change(Post, :count)
+        end.to_not change(Post, :count)
       end
 
       it "render new view" do
@@ -79,13 +77,13 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context "post#delete" do
-      let!(:current_user_post) { create(:post, user: user)}
-      let(:not_current_user_post) { create(:post)}
+      let!(:current_user_post) { create(:post, user: user) }
+      let(:not_current_user_post) { create(:post) }
 
       it "delete own posts" do
-        expect{
-          delete :destroy, params: { id: current_user_post.id  }
-        }.to change(Post, :count)
+        expect do
+          delete :destroy, params: { id: current_user_post.id }
+        end.to change(Post, :count)
       end
 
       it "can't delete NOT own posts" do

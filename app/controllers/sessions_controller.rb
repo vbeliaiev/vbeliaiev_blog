@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     if login(params[:email], params[:password])
@@ -15,5 +13,4 @@ class SessionsController < ApplicationController
     logout
     redirect_to root_path, notice: 'Logged out successfully'
   end
-
 end

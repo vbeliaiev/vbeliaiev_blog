@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  after_action :verify_authorized, only: [:new,
-                                          :create]
+  after_action :verify_authorized, only: %i[new create]
+
   def new
     @user = User.new
     authorize @user

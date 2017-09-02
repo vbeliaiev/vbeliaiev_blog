@@ -12,14 +12,13 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
 
   scope :latest, -> { order(created_at: :desc) }
-  scope :with_tag_id, -> (tag_id) { joins(:post_tags).where('tag_id = ?', tag_id).distinct if tag_id.present? }
+  scope :with_tag_id, ->(tag_id) { joins(:post_tags).where('tag_id = ?', tag_id).distinct if tag_id.present? }
 
   accepts_nested_attributes_for :picture
 
-  alias_method :author, :user
+  alias author user
 
   after_save :assign_tags
-
 
   def picture
     super || build_picture
@@ -29,6 +28,31 @@ class Post < ApplicationRecord
     comments.order(created_at: :asc)
   end
 
+  # Decorate methods
+  def author_name
+    user.display_name
+  end
+
+  def tags_links(css_wrapper_class: nil)
+    css_wrapper_class
+    # return nil unless tags.present?
+    # h.content_tag :div, class: css_wrapper_class do
+    #   tags.inject('')do |sum, tag|
+    #     sum += h.content_tag :b do
+    #       h.link_to('#' + tag.name, h.posts_path(tag_id: tag))
+    #     end
+    #
+    #     sum += ' '
+    #     sum
+    #   end.html_safe
+    # end
+  end
+
+  def display_body
+    body.html_safe
+  end
+
+  ##
   private
 
   # It is not the best way for the performance, but it is ok for now.
