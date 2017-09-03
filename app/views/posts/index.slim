@@ -1,18 +1,23 @@
 .row
   = flash_messages
-- if @current_tag
-  h2.current-tag = "##{@current_tag.try(:name)}"
-- else
-  h2.current-tag Latest Posts:
-.posts-list.pull-left
-  = render @posts
 
-.post-tags-list
+
+.post-tags-list.pull-left
+  h2.current-tag Tags
   .row
     .box.tags-box
-      h4.text-center Tags
       - @tags.each do |tag|
         = link_to tag.display_name, posts_path(tag_id: tag.id)
+
+.posts-list.pull-right
+  - if @current_tag
+    h2.current-tag = "##{@current_tag.try(:name)}"
+  - else
+    h2.current-tag Latest Posts:
+  = render @posts
+
+
+
 .pagination-div
   .row.paginate-row.pull-left
     = will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: '←', next_label: '→'
