@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
-server '138.68.97.138', port: 22, roles: [:web, :app, :db], primary: true
+server '138.68.97.138', port: 22, roles: %i[web app db], primary: true
 
 set :repo_url,        'git@github.com:IScreaam/my-blog.git'
 set :application,     'blog'
@@ -20,13 +20,13 @@ set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
 set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
 set :puma_access_log, "#{release_path}/log/puma.error.log"
 set :puma_error_log,  "#{release_path}/log/puma.access.log"
-set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w[~/.ssh/id_rsa.pub] }
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-#set :rvm_type, :system
+set :puma_init_active_record, true # Change to false when not using ActiveRecord
+
 set :rvm_path, '/usr/share/rvm'
-set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_files, %w[config/database.yml config/secrets.yml]
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
@@ -55,8 +55,8 @@ namespace :deploy do
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
+        puts 'WARNING: HEAD is not the same as origin/master'
+        puts 'Run `git push` to sync changes.'
         exit
       end
     end
@@ -80,10 +80,10 @@ namespace :deploy do
   desc 'Link uploads folder'
   task :link_uploads do
     on roles(:app), in: :sequence, wait: 5 do
-      sh "ln -s /mnt/volume-fra1-01/uploads/ #{Rails.root.to_s}/public/uploads/"
+      p shared_path
+      execute 'ln -s /mnt/volume-fra1-01/uploads/ /home/deploy/apps/blog/current/public/'
     end
   end
-
 
   before :starting,     :check_revision
   after  :finishing,    :compile_assets

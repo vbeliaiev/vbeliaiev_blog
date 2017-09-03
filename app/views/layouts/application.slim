@@ -28,4 +28,7 @@ html lang="en"
       .container
         .row
           .col-lg-12.text-center
-            p = "Copyrights #{ Date.current.year }"
+            .footer-content
+              p = "Copyrights #{ Date.current.year }"
+              = link_to 'https://www.digitalocean.com/' do
+                = image_tag('digital_ocean.png', class: 'digital-ocean-logo')

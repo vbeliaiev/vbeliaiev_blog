@@ -15,3 +15,20 @@
 .brand {
   clear: both;
 }
+
+.footer-content {
+  width: 270px;
+  margin: 0 auto;
+
+  p {
+    margin: 0;
+    padding: 15px 0;
+    float: left;
+    margin-right: 15px;
+  }
+  img.digital-ocean-logo {
+    width: 125px;
+    float: left;
+    margin-top: 9px;
+  }
+}

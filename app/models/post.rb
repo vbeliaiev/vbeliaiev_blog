@@ -28,7 +28,7 @@ class Post < ApplicationRecord
     comments.order(created_at: :asc)
   end
 
-  # Decorate methods
+  ## Decorate methods
   def author_name
     user.display_name
   end
@@ -37,10 +37,9 @@ class Post < ApplicationRecord
     body.html_safe
   end
 
-  ##
   private
 
-  # It is not the best way for the performance, but it is ok for now.
+  ## It is not the best way for the performance, but it is ok for now.
   def assign_tags
     self.tags = tags_names_from_body.inject([]) do |sum, name|
       sum << Tag.find_or_create_by(name: name)
