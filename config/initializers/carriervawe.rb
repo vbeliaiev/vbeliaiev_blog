@@ -1,8 +1,4 @@
 CarrierWave.configure do |config|
-  # Use heroku vars on production
-
-    config.storage = :file
-  # For testing, upload files to local `tmp` folder.
-
-  # Fog::Storage.new(config.fog_credentials).sync_clock
+  config.storage = :file
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
 end

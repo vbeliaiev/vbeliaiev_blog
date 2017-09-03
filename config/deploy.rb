@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
-server '188.226.160.174', port: 22, roles: [:web, :app, :db], primary: true
+server '138.68.97.138', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:IScreaam/my-blog.git'
 set :application,     'blog'
@@ -26,7 +26,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 #set :rvm_type, :system
 set :rvm_path, '/usr/share/rvm'
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master

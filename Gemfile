@@ -45,7 +45,6 @@ gem 'will_paginate-bootstrap'
 
 # Image uploader
 gem 'carrierwave', '~> 1.0'
-#gem 'fog'
 gem 'mini_magick'
 
 group :development, :test do
