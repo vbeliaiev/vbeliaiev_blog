@@ -44,6 +44,10 @@
 
 .posts-list, .pagination-div {
   width: 100%;
+  .box {
+    padding: 30px 15px;
+    padding-bottom: 50px;
+  }
 }
 
 .post-tags-list {
@@ -79,6 +83,9 @@
 @media screen and(min-width:768px) {
   .posts-list, .pagination-div {
     width: 71%;
+    .box {
+      padding: 30px 15px;
+    }
   }
 
   .current-tag {
