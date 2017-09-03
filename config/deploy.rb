@@ -77,9 +77,18 @@ namespace :deploy do
     end
   end
 
+  desc 'Link uploads folder'
+  task :link_uploads do
+    on roles(:app), in: :sequence, wait: 5 do
+      sh "ln -s /mnt/volume-fra1-01/uploads/ #{Rails.root.to_s}/public/uploads/"
+    end
+  end
+
+
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
+  after  :finishing,    :link_uploads
   after  :finishing,    :restart
 end
 
