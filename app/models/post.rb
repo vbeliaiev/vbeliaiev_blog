@@ -19,6 +19,7 @@ class Post < ApplicationRecord
   alias author user
 
   after_save :assign_tags
+  after_commit on: [:update, :destroy] { Tag.clean_tags! }
 
   def picture
     super || build_picture
