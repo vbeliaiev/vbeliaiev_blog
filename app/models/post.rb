@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   alias author user
 
   after_save :assign_tags
-  after_commit on: [:update, :destroy] { Tag.clean_tags! }
+  after_commit :clean_tags!, on: %i[update destroy]
 
   def picture
     super || build_picture
@@ -39,6 +39,10 @@ class Post < ApplicationRecord
   end
 
   private
+
+  def clean_tags!
+    Tag.clean_tags!
+  end
 
   ## It is not the best way for the performance, but it is ok for now.
   def assign_tags
