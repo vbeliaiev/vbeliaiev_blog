@@ -1,0 +1,37 @@
+ul.posts {
+  color: #F99900;
+  a {
+    color: #000000;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: #F99900;
+      text-decoration-thickness: 5px;
+
+    }
+  }
+  .created-at-post {
+    color: #444E4F;
+  }
+}
+.posts-category-container {
+  text-align: center;
+  height: 50px;
+  background-image: url(bookmark.png);
+  background-size: 40px;
+  background-position: 60px 0;
+  background-repeat: no-repeat;
+  .category-title {
+    font-family: "Silom", "Courier New", monospace;
+  }
+  .posts-bookmark {
+    height: 55px;
+    float: left;
+    margin-left: 2rem;
+  }
+}
+
+.post-detailed-page {
+  .post-picture {
+    width: 100%;
+  }
+}

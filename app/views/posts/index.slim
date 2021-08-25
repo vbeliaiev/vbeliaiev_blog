@@ -1,23 +1,10 @@
-.row
-  = flash_messages
+article.container-fluid.py-4
+  .row.py-4
+    .col-sm-12.posts-category-container
+      h2.category-title
+        = @current_category&.name || @current_tag&.name || 'Latest posts'
+  ul.posts.px-5
+    = render @posts
 
-
-.post-tags-list.pull-left
-  h2.current-tag Tags
   .row
-    .box.tags-box
-      - @tags.each do |tag|
-        = link_to tag.display_name, posts_path(tag_id: tag.id)
-
-.posts-list.pull-right
-  - if @current_tag
-    h2.current-tag = "##{@current_tag.try(:name)}"
-  - else
-    h2.current-tag Latest Posts:
-  = render @posts
-
-
-
-.pagination-div
-  .row.paginate-row.pull-left
-    = will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: '←', next_label: '→'
+    = will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: '←', next_label: '→'

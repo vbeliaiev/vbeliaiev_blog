@@ -7,12 +7,13 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootstrap_form'
+gem 'bootstrap', '~> 5.1.0'
+#gem 'bootstrap_form'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use slim instead of erb
 gem 'slim-rails'
+gem 'popper_js', '~> 2.9.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -41,7 +42,7 @@ gem 'pundit'
 
 # Paginate
 gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 
 # Image uploader
 gem 'carrierwave', '~> 1.0'

@@ -1,63 +1,36 @@
 .row
   = flash_messages
-.row
-  .box
-    h4 = @post.title
-    hr
+.row.post-detailed-page
+  .col-md-12.p-5
+    .row
+      .col-md-12
+        h4 = @post.title
+
     - unless @post.picture.new_record?
-      = image_tag @post.picture.picture.url, class: 'post-picture'
-    br
-    .post-content
-      = @post.display_body
-    = post_tags_links(@post, css_wrapper_class: 'show-post-tags')
-    .created-by-post.pull-left
-      span.created-by-title-post Created By:&nbsp;
-      span = link_to @post.author_name, user_path(@post.user)
-    .created-at-post.pull-right
-      = @post.created_at.strftime('%d %b %Y %H:%M')
-    br
-    br
-    = social_share_button_tag(@post.title,
-            desc: 'TEST DESCRIPTION!',
-            image: @post.picture.new_record? ? nil : @post.picture.picture.url )
-    - if policy(@post).destroy?
-      = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
-        span.glyphicon.glyphicon-trash
-        span Delete Post
+      .row.py-3
+        .col-md-12
+          = image_tag @post.picture.picture.url, class: 'post-picture'
 
-    - if policy(@post).edit?
-      = link_to edit_post_path(@post), class: 'edit-post-link' do
-        span.glyphicon.glyphicon-pencil
-        span Edit Post
+    .row
+      .col-md-12.py-3
+        = @post.display_body
 
-    br
-    hr
-    - if @post.comments.present?
-      h4 Post Comments:
-      .comments-collection
-        - @post.comment_list.each do |comment|
-          .comment-item
-            .comment-body-text
-              = comment.body
-            .comment-author
-              |Added&nbsp;
-              b = comment.created_at.strftime('%d %b %Y %H:%M')
-              |&nbsp;By&nbsp;
-              i = link_to comment.author.decorate.display_name, user_path(comment.author)
-            .comment-control
-              - if policy(comment).destroy?
-                = link_to comment_path(comment), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
-                  span.glyphicon.glyphicon-trash
-                  span Delete Comment
-          hr.comment-hr
+    .row
+      .col-md-12.py-3
+        = post_tags_links(@post, css_wrapper_class: 'show-post-tags')
 
-      hr
-    - if policy(Comment.new).create?
-      = bootstrap_form_for Comment.new, url: comments_path(post_id: @post.id), html: {class: 'comments-form'}, multipart: true do |f|
-        = f.text_area :body,
-                placeholder: 'Enter your comment here ...',
-                minlength: 5,
-                maxlength: 6555,
-                class: 'comment-body',
-                label: 'Add comment:'
-        = f.submit class: 'btn btn-success'
+    .row
+      .col-md-12.py-3
+        = @post.created_at.strftime('%d %b %Y %H:%M')
+
+    .row
+      .col-md-12
+        - if policy(@post).destroy?
+          = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
+            span.glyphicon.glyphicon-trash
+            span Delete Post
+
+        - if policy(@post).edit?
+          = link_to edit_post_path(@post), class: 'edit-post-link' do
+            span.glyphicon.glyphicon-pencil
+            span Edit Post

@@ -4,31 +4,68 @@ html lang="en"
     meta charset="utf-8" /
     meta content="IE=edge" http-equiv="X-UA-Compatible" /
     meta content="width=device-width, initial-scale=1" name="viewport" /
-    meta content="Students blog" name="description" /
+    meta content="Personal blog" name="description" /
     meta content="Vladyslav Beliaiev" name="author" /
-    title French students blog
+    title Vlad Beliaiev blog
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag
-    link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" /
-    link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css" /
   body
-    = render 'layouts/user_actions'
+    header
+      .row
+        .col
+          .container-logo.px-4
+            = link_to root_path, class: 'logo-link' do
+              = image_tag('logo.png', class: 'logo')
+        .col-sm-6.g-0.col-main-menu
+          nav.main-menu
+            ul
+              li.main-menu-item
+                = link_to 'Categories', '#', class: 'dropdown-toggle', id: 'categoriesDropdownMenuLink', "aria-expanded"=>"false", "data-bs-toggle"=>"dropdown", "role"=>"button"
+                ul.dropdown-menu.dropdown-categories-menu aria-labelledby="navbarCategoriesDropdownMenuLink"
+                  - @categories.each do |category|
+                    li
+                      = link_to category.name, posts_path(category_id: category.id), class: 'dropdown-item'
 
-
-    = link_to root_path, class: 'logo-link' do
-      .brand #VBELIAIEV
-      .address-bar My test app
-
-    .container.main-content
-      = yield
-
+              li.main-menu-item
+                = link_to 'About Me', 'google.com'
+        .col
+          .container-contacts.px-4
+            ul.contact-links
+              li
+                = link_to 'linkedin.com', class: '' do
+                  = image_tag('linkedin_logo.png', class: '')
+              li
+                = link_to 'github.com', class: '' do
+                  = image_tag('github_logo.png', class: '')
+              li
+                = link_to 'instagram.com', class: '' do
+                  = image_tag('instagram_logo.png', class: '')
+              li
+                = mail_to 'gmail.com', class: '' do
+                  = image_tag('email_logo.png', class: '')
+    main
+      .row.justify-content-md-center
+        .col-lg-6.main-content
+          =yield
     footer
-      .container
+      .row.brand-ribbon
+      .row.contacts-footer
         .row
-          .col-lg-12.text-center
-            .footer-content
-              p = "Students MBA #{ Date.current.year }"
-              = link_to 'https://www.digitalocean.com/', target: :blank do
-                = image_tag('digital_ocean.png', class: 'digital-ocean-logo')
+          .container-fluid.p-5
+            = image_tag('logo.png', class: 'footer-logo')
+            .footer-contact-links
+              ul
+                li
+                  = link_to 'linkedin.com', class: '' do
+                    = image_tag('linkedin_logo.png', class: '')
+                li
+                  = link_to 'github.com', class: '' do
+                    = image_tag('github_logo.png', class: '')
+                li
+                  = link_to 'instagram.com', class: '' do
+                    = image_tag('instagram_logo.png', class: '')
+                li
+                  = mail_to 'gmail.com', class: '' do
+                    = image_tag('email_logo.png', class: '')

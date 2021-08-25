@@ -4,8 +4,11 @@ class Post < ApplicationRecord
   has_many :commentators, through: :comments, source: :user
   has_one :picture, as: :imageable, dependent: :destroy
 
-  has_many :post_tags
+  has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+
+  has_many :categories_posts, dependent: :destroy
+  has_many :categories, through: :categories_posts
 
   validates :title, presence: true, length: { minimum: 2, maximum: 255 }
   validates :body, presence: true, length: { minimum: 10, maximum: 6555 }
@@ -13,6 +16,7 @@ class Post < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   scope :with_tag_id, ->(tag_id) { joins(:post_tags).where('tag_id = ?', tag_id).distinct if tag_id.present? }
+  scope :with_category_id, ->(category_id) { joins(:categories_posts).where('category_id = ?', category_id).distinct if category_id.present? }
 
   accepts_nested_attributes_for :picture
 

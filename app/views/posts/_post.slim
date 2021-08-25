@@ -1,14 +1,6 @@
-.row
-  .box
-    - unless post.picture.new_record?
-      = image_tag post.picture.picture.thumb.url, class: 'post-thumb-picture'
+li.py-3
+  section
     = link_to post_path(post) do
       h4 = post.title
-    .post-content
-      = truncate_html(post.display_body, length: 250)
-    = post_tags_links(post, css_wrapper_class: 'tag-links')
-    .created-by-post.pull-left
-      span.created-by-title-post Created by:&nbsp;
-      span = link_to post.author_name, user_path(post.user)
-    .created-at-post.pull-right
+    .created-at-post
       = post.created_at.strftime('%d %b %Y %H:%M')

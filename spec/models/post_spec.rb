@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  it { should have_many(:comments).dependent(:destroy) }
+  it { should have_many(:commentators).through(:comments).source(:user) }
+  it { should have_many(:post_tags).dependent(:destroy) }
+  it { should have_many(:tags).through(:post_tags) }
+  it { should have_many(:categories_posts).dependent(:destroy) }
+  it { should have_many(:categories).through(:categories_posts) }
+  it { should have_one(:picture).dependent(:destroy) }
+
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:body) }
   it { is_expected.to validate_presence_of(:user_id) }
