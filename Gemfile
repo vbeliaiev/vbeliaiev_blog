@@ -15,7 +15,7 @@ gem 'sass-rails'
 gem 'slim-rails'
 gem 'popper_js', '~> 2.9.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
