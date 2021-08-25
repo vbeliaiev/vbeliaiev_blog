@@ -35,7 +35,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   context 'when user logged in' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     before do
       login_user(user, sign_in_path)
@@ -47,7 +47,7 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context 'with valid attributes for post create action' do
-      let(:post_valid_params) { FactoryGirl.attributes_for(:post) }
+      let(:post_valid_params) { FactoryBot.attributes_for(:post) }
 
       it 'creates new object' do
         expect do
@@ -62,7 +62,7 @@ RSpec.describe PostsController, type: :controller do
     end
 
     context 'with not valid attributes for post create action' do
-      let(:post_invalid_params) { FactoryGirl.attributes_for(:post).merge(title: nil) }
+      let(:post_invalid_params) { FactoryBot.attributes_for(:post).merge(title: nil) }
 
       it 'not save object to db' do
         expect do

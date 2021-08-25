@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   def display_name
     return 'User' if first_name.blank? && last_name.blank?
+
     "#{first_name} #{last_name}"
   end
 end

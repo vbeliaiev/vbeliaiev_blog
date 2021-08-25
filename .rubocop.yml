@@ -1,5 +1,7 @@
+require: rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.7
   Exclude:
     - db/schema.rb
     - db/migrate/*.rb
@@ -7,6 +9,7 @@ AllCops:
     - .bundle/*
     - vendor/cache/**/*
     - db/seeds.rb
+    - db/config/*
 
 Metrics/LineLength:
   Max: 121

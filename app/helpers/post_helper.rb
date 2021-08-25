@@ -6,7 +6,7 @@ module PostHelper
     content_tag :div, class: css_wrapper_class do
       tags.inject('') do |sum, tag|
         sum += content_tag :b do
-          link_to('#' + tag.name, posts_path(tag_id: tag))
+          link_to("##{tag.name}", posts_path(tag_id: tag))
         end
 
         sum += ' '

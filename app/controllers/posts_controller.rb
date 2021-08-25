@@ -12,7 +12,6 @@ class PostsController < ApplicationController
 
     @tags = Tag.select(:id, :name).latest
     @current_tag = Tag.find_by(id: params[:tag_id])
-
   end
 
   def show; end

@@ -16,7 +16,11 @@ class Post < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   scope :with_tag_id, ->(tag_id) { joins(:post_tags).where('tag_id = ?', tag_id).distinct if tag_id.present? }
-  scope :with_category_id, ->(category_id) { joins(:categories_posts).where('category_id = ?', category_id).distinct if category_id.present? }
+  scope :with_category_id, ->(category_id) {
+                             if category_id.present?
+                               joins(:categories_posts).where('category_id = ?', category_id).distinct
+                             end
+                           }
 
   accepts_nested_attributes_for :picture
 

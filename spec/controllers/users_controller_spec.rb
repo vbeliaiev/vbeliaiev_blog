@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'GET #new' do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     before do
       login_user(user, sign_in_path)
