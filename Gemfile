@@ -54,14 +54,13 @@ gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
 gem 'factory_bot_rails'
+gem 'ffaker'
 
 group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
   gem 'pry-remote'
-
-  gem 'ffaker'
 end
 
 group :development do
