@@ -53,13 +53,14 @@ gem 'will_paginate-bootstrap4'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 
+gem 'factory_bot_rails'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
   gem 'pry-remote'
 
-  gem 'factory_bot_rails'
   gem 'ffaker'
 end
 
