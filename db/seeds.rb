@@ -6,5 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = FactoryGirl.create(:user)
-FactoryGirl.create_list(:post, 40, user: user)
+user = FactoryBot.create(:user, email: 'vlad@dev.com', password: 'password123')
+category1 = FactoryBot.create(:category, name: 'Programming')
+category2 = FactoryBot.create(:category, name: 'Sport')
+category3 = FactoryBot.create(:category, name: 'Books')
+
+FactoryBot.create_list(:post, 15, user: user, categories: [category1])
+FactoryBot.create_list(:post, 15, user: user, categories: [category2])
+FactoryBot.create_list(:post, 15, user: user, categories: [category3])

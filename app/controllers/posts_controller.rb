@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :set_and_authorize_post, only: %i[show edit update destroy]
   after_action :verify_authorized, only: %i[new create destroy update edit]
 
-  before_action :set_categories, only: %i[index show]
   def index
     @posts = Post.includes(:user, :picture, :tags)
                  .with_tag_id(params[:tag_id])
@@ -51,11 +50,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_categories
-    @current_category = Category.find_by(id: params[:category_id])
-    @categories = Category.select(:id, :name).order(name: :asc)
-  end
 
   def post_params
     params.require(:post).permit(:title,
