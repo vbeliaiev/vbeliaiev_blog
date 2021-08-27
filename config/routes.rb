@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "signin" => "sessions#new", :as => "sign_in"
 
+  get "/pages/:page" => "pages#show"
   root 'posts#index'
 end

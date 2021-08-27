@@ -29,22 +29,22 @@ html lang="en"
                       = link_to category.name, posts_path(category_id: category.id), class: 'dropdown-item'
 
               li.main-menu-item
-                = link_to 'About Me', 'google.com'
+                = link_to 'About Me', '/pages/about'
         .col
           .container-contacts.px-4
             ul.contact-links
               li
-                = link_to 'https://www.linkedin.com/in/vbeliaiev/', class: '' do
-                  = image_tag('linkedin_logo.png', class: '')
+                = link_to 'https://www.linkedin.com/in/vbeliaiev/', target: '_blank' do
+                  = image_tag('linkedin_logo.png')
               li
-                = link_to 'https://github.com/vbeliaiev', class: '' do
-                  = image_tag('github_logo.png', class: '')
+                = link_to 'https://github.com/vbeliaiev', target: '_blank' do
+                  = image_tag('github_logo.png')
               li
-                = link_to 'https://www.instagram.com/vbeliaiev/', class: '' do
-                  = image_tag('instagram_logo.png', class: '')
+                = link_to 'https://www.instagram.com/vbeliaiev/', target: '_blank' do
+                  = image_tag('instagram_logo.png')
               li
-                = mail_to 'vbeliaiev@gmail.com', class: '' do
-                  = image_tag('email_logo.png', class: '')
+                = mail_to 'vbeliaiev@gmail.com' do
+                  = image_tag('email_logo.png')
     main
       .row.justify-content-md-center
         .col-lg-6.main-content
@@ -58,14 +58,14 @@ html lang="en"
             .footer-contact-links
               ul
                 li
-                  = link_to 'https://www.linkedin.com/in/vbeliaiev/', class: '' do
-                    = image_tag('linkedin_logo.png', class: '')
+                  = link_to 'https://www.linkedin.com/in/vbeliaiev/', target: '_blank' do
+                    = image_tag('linkedin_logo.png')
                 li
-                  = link_to 'https://github.com/vbeliaiev', class: '' do
-                    = image_tag('github_logo.png', class: '')
+                  = link_to 'https://github.com/vbeliaiev', target: '_blank' do
+                    = image_tag('github_logo.png')
                 li
-                  = link_to 'https://www.instagram.com/vbeliaiev/', class: '' do
-                    = image_tag('instagram_logo.png', class: '')
+                  = link_to 'https://www.instagram.com/vbeliaiev/', target: '_blank' do
+                    = image_tag('instagram_logo.png')
                 li
-                  = mail_to 'vbeliaiev@gmail.com', class: '' do
-                    = image_tag('email_logo.png', class: '')
+                  = mail_to 'vbeliaiev@gmail.com' do
+                    = image_tag('email_logo.png')
