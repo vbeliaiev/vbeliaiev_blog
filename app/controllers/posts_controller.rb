@@ -7,7 +7,7 @@ class PostsController < ApplicationController
                  .with_tag_id(params[:tag_id])
                  .with_category_id(params[:category_id])
                  .latest
-                 .paginate(page: params[:page], per_page: 10)
+                 .page(params[:page]).per(10)
 
     @tags = Tag.select(:id, :name).latest
     @current_tag = Tag.find_by(id: params[:tag_id])

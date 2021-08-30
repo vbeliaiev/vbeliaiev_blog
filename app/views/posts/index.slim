@@ -7,4 +7,6 @@ article.container-fluid.py-4
     = render @posts
 
   .row
-    = will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: '←', next_label: '→'
+    .col.pagination
+      = link_to_prev_page @posts, '<', class: 'btn btn-outline-dark prev-link'
+      = link_to_next_page @posts, '>', class: 'btn btn-outline-dark'

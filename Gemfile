@@ -46,8 +46,7 @@ gem 'sorcery'
 gem 'pundit'
 
 # Paginate
-gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap4'
+gem 'kaminari'
 
 # Image uploader
 gem 'carrierwave', '~> 1.0'
