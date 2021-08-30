@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "AcuminVariableConcept";
+  src: font-url('AcuminVariableConcept.eot') format('embedded-opentype'),
+       font-url('AcuminVariableConcept.ttf') format('truetype')
+}
+
 a {
   text-decoration: none;
   color: #000000;
@@ -16,7 +22,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   max-width: 100%;
   overflow-x: hidden;
-  font-family: Arial;
+  font-family: "AcuminVariableConcept";
 
   header {
     background: #000000;

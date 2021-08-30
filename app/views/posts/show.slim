@@ -1,36 +1,38 @@
-.row
-  = flash_messages
-.row.post-detailed-page
-  .col-md-12.p-5
+.row.justify-content-md-center
+  .col-lg-6.main-content
     .row
-      .col-md-12
-        h4 = @post.title
+      = flash_messages
+    .row.post-detailed-page
+      .col-md-12.p-5
+        .row
+          .col-md-12
+            h4 = @post.title
 
-    - unless @post.picture.new_record?
-      .row.py-3
-        .col-md-12
-          = image_tag @post.picture.picture.url, class: 'post-picture'
+        - unless @post.picture.new_record?
+          .row.py-3
+            .col-md-12
+              = image_tag @post.picture.picture.url, class: 'post-picture'
 
-    .row
-      .col-md-12.py-3
-        = @post.display_body
+        .row
+          .col-md-12.py-3
+            = @post.display_body
 
-    .row
-      .col-md-12.py-3
-        = post_tags_links(@post, css_wrapper_class: 'show-post-tags')
+        .row
+          .col-md-12.py-3
+            = post_tags_links(@post, css_wrapper_class: 'show-post-tags')
 
-    .row
-      .col-md-12.py-3
-        = @post.created_at.strftime('%d %b %Y %H:%M')
+        .row
+          .col-md-12.py-3
+            = @post.created_at.strftime('%d %b %Y %H:%M')
 
-    .row
-      .col-md-12
-        - if policy(@post).destroy?
-          = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
-            span.glyphicon.glyphicon-trash
-            span Delete Post
+        .row
+          .col-md-12
+            - if policy(@post).destroy?
+              = link_to post_path(@post), method: :delete, class: 'delete-post-link', 'data-confirm' => 'Are you sure?' do
+                span.glyphicon.glyphicon-trash
+                span Delete Post
 
-        - if policy(@post).edit?
-          = link_to edit_post_path(@post), class: 'edit-post-link' do
-            span.glyphicon.glyphicon-pencil
-            span Edit Post
+            - if policy(@post).edit?
+              = link_to edit_post_path(@post), class: 'edit-post-link' do
+                span.glyphicon.glyphicon-pencil
+                span Edit Post

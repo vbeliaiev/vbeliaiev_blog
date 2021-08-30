@@ -46,9 +46,7 @@ html lang="en"
                 = mail_to 'vbeliaiev@gmail.com' do
                   = image_tag('email_logo.png')
     main
-      .row.justify-content-md-center
-        .col-lg-6.main-content
-          =yield
+      =yield
     footer
       .row.brand-ribbon
       .row.contacts-footer

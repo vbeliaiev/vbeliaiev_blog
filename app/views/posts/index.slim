@@ -1,12 +1,14 @@
-article.container-fluid.py-4
-  .row.py-4
-    .col-sm-12.posts-category-container
-      h2.category-title
-        = @current_category&.name || @current_tag&.name || 'Latest posts'
-  ul.posts.px-5
-    = render @posts
+.row.justify-content-md-center
+  .col-lg-6.main-content
+    article.container-fluid.py-4
+      .row.py-4
+        .col-sm-12.posts-category-container
+          h2.category-title
+            = @current_category&.name || @current_tag&.name || 'Latest posts'
+      ul.posts.px-5
+        = render @posts
 
-  .row
-    .col.pagination
-      = link_to_prev_page @posts, '<', class: 'btn btn-outline-dark prev-link'
-      = link_to_next_page @posts, '>', class: 'btn btn-outline-dark'
+      .row
+        .col.pagination
+          = link_to_prev_page @posts, '<', class: 'btn btn-outline-dark prev-link'
+          = link_to_next_page @posts, '>', class: 'btn btn-outline-dark'
