@@ -12,7 +12,7 @@ html lang="en"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = favicon_link_tag
   body
-    header.col
+    header.container-fluid
       .row
         .col
           .container-logo.px-4
@@ -45,25 +45,24 @@ html lang="en"
               li
                 = mail_to 'vbeliaiev@gmail.com' do
                   = image_tag('email_logo.png')
-    main
+    main.container
       =yield
-    footer
+    footer.container-fluid
       .row.brand-ribbon
       .row.contacts-footer
-        .row
-          .container-fluid.p-5
-            = image_tag('logo.png', class: 'footer-logo')
-            .footer-contact-links
-              ul
-                li
-                  = link_to 'https://www.linkedin.com/in/vbeliaiev/', target: '_blank' do
-                    = image_tag('linkedin_logo.png')
-                li
-                  = link_to 'https://github.com/vbeliaiev', target: '_blank' do
-                    = image_tag('github_logo.png')
-                li
-                  = link_to 'https://www.instagram.com/vbeliaiev/', target: '_blank' do
-                    = image_tag('instagram_logo.png')
-                li
-                  = mail_to 'vbeliaiev@gmail.com' do
-                    = image_tag('email_logo.png')
+        .container-fluid.p-5
+          = image_tag('logo.png', class: 'footer-logo')
+          .footer-contact-links
+            ul
+              li
+                = link_to 'https://www.linkedin.com/in/vbeliaiev/', target: '_blank' do
+                  = image_tag('linkedin_logo.png')
+              li
+                = link_to 'https://github.com/vbeliaiev', target: '_blank' do
+                  = image_tag('github_logo.png')
+              li
+                = link_to 'https://www.instagram.com/vbeliaiev/', target: '_blank' do
+                  = image_tag('instagram_logo.png')
+              li
+                = mail_to 'vbeliaiev@gmail.com' do
+                  = image_tag('email_logo.png')
